@@ -8,22 +8,25 @@
   display: flex;
   gap: 2rem;
   padding: 1rem;
+  overflow: hidden;
+  
 }
 
-.pokemon {
-  height: 30rem;
-  width: 20rem;
-  overflow-y: scroll;
-}
-
-.pokemon li {
+.catsContainer{
   display: flex;
-  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
   justify-content: space-between;
-  margin-top: 1rem;
-  margin-right: 1rem;
 }
 
-.stat + .stat {
-  margin-top: .5rem;
+button{
+  width: 150px; 
+  margin: 3rem 0rem 0rem;
+}
+
+@media (max-width: 767px) { /* Ajuste o breakpoint conforme necessário */
+  .catsContainer{ 
+    justify-content: center;
+  }
 }

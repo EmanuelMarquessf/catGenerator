@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import CatCard from "../components/CatCard";
+import CatCard from "./components/CatCard";
 
-import fetchCats from "../hooks/apiUtils";
+import fetchCats from "./hooks/apiUtils";
 
 function App() {
 
@@ -12,20 +12,24 @@ function App() {
     });
   }, []);
 
+  const moreCats = () => {
+    fetchCats().then((cats) => {
+      setCats(cats);
+    });
+  };
+
   return (
-    <div className="app" style={{display: "flex", flexDirection: "column"}}>
+    <div className="app" style={{display: "flex", flexDirection: "column", margin: '0rem 1rem'}}>
       <h2>Cats</h2>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          flexWrap: "wrap",
-          gap: "2rem",
-        }}
-      >
-        {cats.map((cat) => (
-          <CatCard key={cat.id} name={cat.name} image={cat.url} />
-        ))}
+      <div style={{ display: 'grid', placeItems: 'center'}}>
+        <div
+          className="catsContainer"
+        >
+          {cats.map((cat) => (
+            <CatCard key={cat.id} name={cat.name} image={cat.url} />
+          ))}
+        </div>
+        <button onClick={moreCats} >New Cats</button>
       </div>
     </div>
   );
